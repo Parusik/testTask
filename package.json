@@ -1,0 +1,84 @@
+{
+  "name": "koa_start_app",
+  "version": "1.0.0",
+  "description": "Koa start app",
+  "license": "ISC",
+  "author": "Kirill Chebotaryov",
+  "main": "index.js",
+  "scripts": {
+    "precommit": "npm run test && lint-staged",
+    "commitmsg": "commit-message-validator",
+    "esw": "./node_modules/.bin/esw --config ./.eslintrc.json --color --fix --watch ",
+    "lint": "./node_modules/.bin/eslint  ./",
+    "prod": "cross-env NODE_ENV=production node ./backend",
+    "start": "cross-env NODE_ENV=development nodemon ./backend",
+    "test": "NODE_ENV=test mocha"
+  },
+  "config": {
+    "commit-message-validator": {
+      "pattern": [
+        "merge",
+        "[(.*-|#)[0-9]+:[A-Z]{3,}].+"
+      ],
+      "errorMessage": "Aborting commit...\nPlease ensure your commit message meets the standard requirement:\n'[#StoryID:CommitType] Commit Message"
+    }
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "command-line-args": "^5.0.2",
+    "http-custom-errors": "^8.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "kcors": "^2.2.1",
+    "koa": "^2.5.0",
+    "koa-body": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-jwt": "^3.3.2",
+    "koa-logger-middleware": "^1.0.0",
+    "koa-passport": "^4.1.0",
+    "koa-response-time": "^2.0.0",
+    "koa-router": "^7.3.0",
+    "mocha": "^5.2.0",
+    "mongoose": "^5.0.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "redis": "^2.8.0",
+    "require-directory": "^2.1.1",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "commit-message-validator": "^0.1.6",
+    "commit-msg": "^0.2.2",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-watch": "^3.1.3",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.11.1",
+    "sort-package-json": "^1.11.0"
+  },
+  "commitMsg": {
+    "noClientHook": true,
+    "noServerHook": true
+  },
+  "lint-staged": {
+    "*.json": [
+      "prettier --write --loglevel error"
+    ],
+    "*.js": [
+      "npm run lint --silent"
+    ],
+    "package.json": [
+      "sort-package-json",
+      "npm dedupe"
+    ],
+    "*": "git add"
+  }
+}

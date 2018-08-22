@@ -1,0 +1,8 @@
+{"level":"info","message":"Connected to MongoDB: mongodb://admin:5488@localhost:27017/wrapper","timestamp":"2018-08-19T14:20:00.176Z"}
+{"level":"info","message":"Server run at port 3000","timestamp":"2018-08-19T14:20:00.183Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://admin:5488@localhost:27017/wrapper","timestamp":"2018-08-19T14:21:47.781Z"}
+{"level":"info","message":"Server run at port 3000","timestamp":"2018-08-19T14:21:47.788Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://admin:5488@localhost:27017/wrapper","label":10,"timestamp":"2018-08-19T14:26:29.090Z"}
+{"level":"info","message":"Server run at port 3000","label":10,"timestamp":"2018-08-19T14:26:29.097Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://admin:5488@localhost:27017/wrapper","label":"backend/tools/db/mongo/index.js","timestamp":"2018-08-19T14:27:20.447Z"}
+{"level":"info","message":"Server run at port 3000","label":"backend/index.js","timestamp":"2018-08-19T14:27:20.454Z"}
