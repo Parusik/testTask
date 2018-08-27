@@ -45,7 +45,7 @@ describe('Return list of users', function() {
     (async () => {
       const { _id: adminId } = await User.findOne({ role: 2 });
 
-      this.requester.get(`/api/users/${adminId}/getList`).end((err, res) => {
+      this.requester.get(`/api/users/${adminId}`).end((err, res) => {
         const { list } = res.body.data;
         expect(list.length).to.be.eql(this.users.length);
         done();
@@ -57,7 +57,7 @@ describe('Return list of users', function() {
     (async () => {
       const { _id: bossId } = await User.findOne({ role: 1 });
 
-      this.requester.get(`/api/users/${bossId}/getList`).end((err, res) => {
+      this.requester.get(`/api/users/${bossId}`).end((err, res) => {
         const { list } = res.body.data;
         expect(list.length).to.be.below(this.users.length);
         done();
@@ -69,7 +69,7 @@ describe('Return list of users', function() {
     (async () => {
       const { _id: userId } = await User.findOne({ role: 0 });
 
-      this.requester.get(`/api/users/${userId}/getList`).end((err, res) => {
+      this.requester.get(`/api/users/${userId}`).end((err, res) => {
         const { list } = res.body.data;
         expect(list.length).to.be.eql(1);
         done();

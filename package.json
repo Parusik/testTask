@@ -1,29 +1,23 @@
 {
+  "apidoc": {
+    "title": "API doc for roles api",
+    "url" : "https://api.github.com/v1"
+  },
   "name": "koa_start_app",
   "version": "1.0.0",
   "description": "Koa start app",
   "license": "ISC",
   "author": "Kirill Chebotaryov",
-  "main": "index.js",
   "scripts": {
-    "precommit": "npm run test && lint-staged",
-    "commitmsg": "commit-message-validator",
+    "doc": "apidoc -i backend/routing -o apidoc/",
     "esw": "./node_modules/.bin/esw --config ./.eslintrc.json --color --fix --watch ",
     "lint": "./node_modules/.bin/eslint  ./",
     "prod": "cross-env NODE_ENV=production node ./backend",
     "start": "cross-env NODE_ENV=development nodemon ./backend",
     "test": "NODE_ENV=test mocha --timeout 15000"
   },
-  "config": {
-    "commit-message-validator": {
-      "pattern": [
-        "merge",
-        "[(.*-|#)[0-9]+:[A-Z]{3,}].+"
-      ],
-      "errorMessage": "Aborting commit...\nPlease ensure your commit message meets the standard requirement:\n'[#StoryID:CommitType] Commit Message"
-    }
-  },
   "dependencies": {
+    "apidoc": "^0.17.6",
     "bluebird": "^3.5.1",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
@@ -63,22 +57,5 @@
     "lint-staged": "^7.2.2",
     "prettier": "^1.11.1",
     "sort-package-json": "^1.11.0"
-  },
-  "commitMsg": {
-    "noClientHook": true,
-    "noServerHook": true
-  },
-  "lint-staged": {
-    "*.json": [
-      "prettier --write --loglevel error"
-    ],
-    "*.js": [
-      "npm run lint --silent"
-    ],
-    "package.json": [
-      "sort-package-json",
-      "npm dedupe"
-    ],
-    "*": "git add"
   }
 }

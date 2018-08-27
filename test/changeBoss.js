@@ -47,7 +47,7 @@ describe('Change boss', function() {
   it('should not change boss without auth', done => {
     (async () => {
       this.requester
-        .get(`/api/users/${'test'}/changeBoss`)
+        .put(`/api/users/${'test'}/changeBoss`)
         .query({ subUserId: 'test', newBossId: 'test' })
         .end((err, res) => {
           expect(res.body.data).to.be.null;
@@ -69,7 +69,7 @@ describe('Change boss', function() {
         .send({ email: bossEmail, password: this.credentials[bossEmail] });
 
       this.requester
-        .get(`/api/users/${bossId}/changeBoss`)
+        .put(`/api/users/${bossId}/changeBoss`)
         .set('Authorization', token)
         .query({ subUserId: subUserId.toString(), newBossId: adminId.toString() })
         .end((err, res) => {
@@ -108,7 +108,7 @@ describe('Change boss', function() {
       };
 
       this.requester
-        .get(`/api/users/${bossId}/changeBoss`)
+        .put(`/api/users/${bossId}/changeBoss`)
         .set('Authorization', token)
         .query(query)
         .end((err, res) => {

@@ -7,10 +7,10 @@ const userRouter = getRouter();
 
 /* PUBLIC ROUTES */
 userRouter.post('/', usersRoutes.createNewUser);
-userRouter.get('/:uId/getList', usersRoutes.getList);
+userRouter.get('/:uId', usersRoutes.getList);
 
 /* SECURE ROUTES */
 userRouter.use(jwt({ secret: authConfigs.JWT_SECRET, debug: !DEVELOPMENT }));
-userRouter.get('/:uId/changeBoss', usersRoutes.changeBoss);
+userRouter.put('/:uId/changeBoss', usersRoutes.changeBoss);
 
 module.exports.userRoutes = userRouter.routes();
