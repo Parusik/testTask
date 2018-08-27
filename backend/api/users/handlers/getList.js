@@ -3,6 +3,7 @@ const { User } = require('../model');
 const getRecursiveList = async id => {
   const list = [];
 
+  // const user =
   const getUser = async uid => {
     const user = await User.findById(uid);
     if (user) {

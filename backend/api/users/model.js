@@ -30,6 +30,10 @@ const User = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  level: {
+    type: Number,
+    default: -1
+  },
   passwordHash: String,
   salt: String
 });
@@ -47,6 +51,43 @@ User.set('toJSON', {
         { id: ret._id.toString() }
       )
 });
+
+User.virtual('isAdmin').get(function get() {
+  this.level = 0;
+  return this.role === 2;
+});
+
+User.virtual('isBoss').get(function get() {
+  return this.role === 1;
+});
+
+User.virtual('isSubordinator').get(function get() {
+  return this.role === 0;
+});
+
+User.methods.pushSubordinator = function pushSubordinator(...subs) {
+  if (this.isSubordinator) {
+    this.becomeBoss();
+  }
+  if (subs.length) {
+    subs.forEach(s => {
+      s.level = this.level + 1; // eslint-disable-line
+      s.boss = this; // eslint-disable-line
+    });
+    this.subordinates.push(...subs);
+  }
+};
+
+User.methods.becomeAdmin = function becomeBoss() {
+  this.level = 0;
+  this.role = 2;
+};
+User.methods.becomeBoss = function becomeBoss() {
+  this.role = 1;
+};
+User.methods.becomeSubordinator = function becomeBoss() {
+  this.role = 0;
+};
 
 User.virtual('password')
   .set(function set(password) {

@@ -1,6 +1,12 @@
 const users = {};
 
 module.exports = {
+  admin: {
+    role: 2,
+    email: 'admin@admin.adimin',
+    password: 'admin',
+    username: 'admin'
+  },
   user: {
     email: 'assrg@asga.com',
     password: 'testtest',
@@ -26,14 +32,14 @@ module.exports = {
     password: 'testtest',
     username: 'testName'
   },
-  user5: {
-    email: '5@asga.com',
-    password: 'testtest',
-    username: 'testName'
-  },
-  user6: {
-    email: '6g@asga.com',
-    password: 'testtest',
-    username: 'testName'
-  }
+  // user5: {
+  //   email: '5@asga.com',
+  //   password: 'testtest',
+  //   username: 'testName'
+  // },
+  // user6: {
+  //   email: '6g@asga.com',
+  //   password: 'testtest',
+  //   username: 'testName'
+  // }
 };

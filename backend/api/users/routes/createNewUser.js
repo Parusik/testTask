@@ -3,15 +3,19 @@ const HTTPErrors = require('http-custom-errors'),
   log = require('../../../tools/logger')(module);
 
 module.exports = async ctx => {
+  const { boss } = ctx.query;
   const { username, email, password } = ctx.request.body;
   try {
     ctx.state.result = {
       data: {
-        user: await usersHandlers.createNewUser({
-          username,
-          email,
-          password
-        })
+        user: await usersHandlers.createNewUser(
+          {
+            username,
+            email,
+            password
+          },
+          boss
+        )
       },
       code: 201
     };

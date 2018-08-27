@@ -12,7 +12,7 @@
     "lint": "./node_modules/.bin/eslint  ./",
     "prod": "cross-env NODE_ENV=production node ./backend",
     "start": "cross-env NODE_ENV=development nodemon ./backend",
-    "test": "NODE_ENV=test mocha"
+    "test": "NODE_ENV=test mocha --timeout 15000"
   },
   "config": {
     "commit-message-validator": {

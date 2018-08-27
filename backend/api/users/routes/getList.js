@@ -6,7 +6,8 @@ module.exports = async ctx => {
   try {
     ctx.state.result = {
       data: {
-        list: await usersHandlers.getList(ctx.params.uId)
+        list: await usersHandlers.getList(ctx.params.uId),
+        tree: await usersHandlers.getAndPopulate(ctx.params.uId)
       }
     };
   } catch (e) {
