@@ -26,8 +26,7 @@ Verify there are no circular dependencies within boss-subordinate relations.
 
 # API DOC: =))
 
->npm run test  - run test
->npm start - run server
+
 ```
 ├─[/api]
 |   |
